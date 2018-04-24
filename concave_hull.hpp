@@ -22,19 +22,6 @@ namespace boost { namespace geometry {
 
 namespace detail {
 
-    /**
-     * @brief Determine whether a geometry is within the area enclosed by a ring.
-     * 
-     */
-    template <typename Geometry, typename Ring>
-    bool within_ring(Geometry const& geometry, Ring const& hull)
-    {
-        typedef typename point_type<Ring>::type Point;
-        model::polygon<Point> solid_hull;
-        solid_hull.outer() = hull;
-        return geometry::within(geometry, solid_hull);
-    }
-    
     template <typename Point>
     struct edge_survey
     {
@@ -101,7 +88,7 @@ void concave_hull(Geometry const& input, int N, OutputGeometry& hull)
     if (is_empty(input))
         return;
 
-    assert(detail::within_ring(input, hull));
+    assert(within(input, hull));
 
     typedef typename point_type<Geometry>::type InputPoint;
     typedef typename point_type<OutputGeometry>::type HullPoint;
