@@ -1,4 +1,5 @@
 #include "concave_hull.hpp"
+#include "centre_of_circle.hpp"
 
 #include <boost/assign/list_of.hpp>
 
@@ -40,6 +41,6 @@ INSTANTIATE_TEST_CASE_P(Bar, ConcaveHull, ::testing::ValuesIn(data));
 TEST(Circle, Centre)
 {
     Point a(1, 1), b(2, 4), c(5, 3);
-    Point centre = detail::centre_of_circle(a, b, c);
+    Point centre = centre_of_circle(a, b, c);
     EXPECT_TRUE(equals(Point(3, 2), centre));
 }
