@@ -21,3 +21,4 @@ add_test(concave_hull test_concave_hull)
 
 add_executable(test_hemisphere test_hemisphere.cpp)
 target_link_libraries(test_hemisphere ${BOOST_LIBRARIES})
+add_test(hemisphere test_hemisphere)
