@@ -10,9 +10,6 @@ find_package(GTest REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS}) # Doing it the easy way for now.
 include_directories(${GTEST_INCLUDE_DIRS})
 
-# add_executable(concave_hull main.cpp)
-# install(TARGETS concave_hull RUNTIME DESTINATION bin)
-
 enable_testing()
 
 add_executable(test_concave_hull test.cpp)
