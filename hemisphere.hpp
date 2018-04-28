@@ -1,10 +1,35 @@
 #ifndef GEOMETRY_HEMISPHERE_HPP
 #define GEOMETRY_HEMISPHERE_HPP
 
+#include <boost/geometry/geometries/box.hpp>
+
+namespace boost { namespace geometry {
+
+namespace model {
+    template <typename Point>
+    struct hemisphere;
+}
+
+template <typename Point, typename HemispherePoint>
+inline bool intersects(Point const& p, model::hemisphere<HemispherePoint> const& hs)
+{
+    return hs.intersects_point(p);
+}
+
+template <typename Point, typename HemispherePoint>
+inline bool intersects(model::box<Point> const& b, model::hemisphere<HemispherePoint> const& hs)
+{
+    return hs.intersects_box(b);
+}
+
+}}
+
 #include <boost/geometry.hpp>
 #include <boost/geometry/geometries/segment.hpp>
 
-namespace boost { namespace geometry { namespace model {
+
+namespace boost { namespace geometry {
+namespace model {
 
 template <typename Point>
 struct hemisphere
@@ -77,18 +102,6 @@ namespace traits
     {
         typedef Point type;
     };
-}
-
-template <typename Point, typename HemispherePoint>
-inline bool intersects(Point const& p, model::hemisphere<HemispherePoint> const& hs)
-{
-    return hs.intersects_point(p);
-}
-
-template <typename Point, typename HemispherePoint>
-inline bool intersects(model::box<Point> const& b, model::hemisphere<HemispherePoint> const& hs)
-{
-    return hs.intersects_box(b);
 }
 
 }}
