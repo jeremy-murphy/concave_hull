@@ -70,8 +70,8 @@ struct hemisphere
         bs.first = b.max_corner();
         if (intersects_segment(bs))
             return true;
-        set<1, 0>(bs.second, get<max_corner, 0>(b));
-        set<1, 1>(bs.second, get<min_corner, 1>(b));
+        set<0>(bs.second, get<max_corner, 0>(b));
+        set<1>(bs.second, get<min_corner, 1>(b));
         if (intersects_segment(bs))
             return true;
         bs.first = b.min_corner();
