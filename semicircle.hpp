@@ -7,17 +7,17 @@ namespace boost { namespace geometry {
 
 namespace model {
     template <typename Point>
-    struct hemisphere;
+    struct semicircle;
 }
 
 template <typename Point, typename HemispherePoint>
-inline bool intersects(Point const& p, model::hemisphere<HemispherePoint> const& hs)
+inline bool intersects(Point const& p, model::semicircle<HemispherePoint> const& hs)
 {
     return hs.intersects_point(p);
 }
 
 template <typename Point, typename HemispherePoint>
-inline bool intersects(model::box<Point> const& b, model::hemisphere<HemispherePoint> const& hs)
+inline bool intersects(model::box<Point> const& b, model::semicircle<HemispherePoint> const& hs)
 {
     return hs.intersects_box(b);
 }
@@ -32,12 +32,12 @@ namespace boost { namespace geometry {
 namespace model {
 
 template <typename Point>
-struct hemisphere
+struct semicircle
 {
     enum side_t {left, right};
 
     template <typename Segment>
-    hemisphere(Segment const &s, side_t side)
+    semicircle(Segment const &s, side_t side)
         : s(s.first, s.second), side(side == right ? 1 : -1) {}
 
     template <typename OtherPoint>
@@ -87,18 +87,18 @@ private:
 
 }
 
-struct hemisphere_tag : single_tag, areal_tag {};
+struct semicircle_tag : single_tag, areal_tag {};
 
 namespace traits
 {
     template <typename Point>
-    struct tag<model::hemisphere<Point> >
+    struct tag<model::semicircle<Point> >
     {
-        typedef hemisphere_tag type;
+        typedef semicircle_tag type;
     };
 
     template <typename Point>
-    struct point_type<model::hemisphere<Point> >
+    struct point_type<model::semicircle<Point> >
     {
         typedef Point type;
     };

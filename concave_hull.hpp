@@ -1,7 +1,7 @@
 #ifndef CONCAVE_HULL_HPP
 #define CONCAVE_HULL_HPP
 
-#include "hemisphere.hpp"
+#include "semicircle.hpp"
 #include "centre_of_circle.hpp"
 
 #include <boost/bind.hpp>
@@ -63,7 +63,7 @@ namespace detail {
     {
         typedef typename Index::value_type Point;
         edge_survey<Point> result;
-        typedef model::hemisphere<typename point_type<Segment>::type> Hemisphere;
+        typedef model::semicircle<typename point_type<Segment>::type> Hemisphere;
         Hemisphere const inner_hs(edge, Hemisphere::right);
         Point p_nearest = *qbegin(points,
                                   index::intersects(inner_hs) // NOTE: Current cause of pain.
