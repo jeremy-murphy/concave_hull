@@ -10,7 +10,7 @@
 
 namespace boost { namespace geometry {
 
-    int determinant_sign(boost::numeric::ublas::permutation_matrix<std ::size_t> const &pm)
+    int determinant_sign(boost::numeric::ublas::permutation_matrix<std::size_t> const &pm)
     {
         namespace bnu = boost::numeric::ublas;
 
@@ -27,7 +27,7 @@ namespace boost { namespace geometry {
     {
         namespace bnu = boost::numeric::ublas;
 
-        bnu::permutation_matrix<std ::size_t> pm(m.size1());
+        bnu::permutation_matrix<std::size_t> pm(m.size1());
         T det;
         if( bnu::lu_factorize(m, pm) )
             det = 0.0;
